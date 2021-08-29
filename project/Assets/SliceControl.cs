@@ -36,7 +36,6 @@ public class SliceControl : MonoBehaviour
     }
     void Update()
     {
-        Vector2 mousePos = new Vector2();
         Vector3 pointStart = new Vector3();
         Vector3 point2 = new Vector3();
         if(Input.GetKeyDown(KeyCode.Mouse0) && !cut && !cutCut)
@@ -81,5 +80,13 @@ public class SliceControl : MonoBehaviour
         //    point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, point2.z));
         //    knife.transform.position = point;
         //}
+    }
+    private void OnDisable()
+    {
+        knife.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        knife.SetActive(true);
     }
 }
