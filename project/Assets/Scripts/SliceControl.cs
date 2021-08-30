@@ -81,6 +81,8 @@ public class SliceControl : MonoBehaviour
     private void OnDisable()
     {
         knife.SetActive(false);//когда скрипт выключается,прячем нож
+        cut = false;
+        cutCut = false;
     }
     private void OnEnable()
     {
