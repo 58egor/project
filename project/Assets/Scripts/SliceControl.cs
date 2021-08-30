@@ -75,7 +75,13 @@ public class SliceControl : MonoBehaviour
             {
                 rotx = -knife.transform.rotation.eulerAngles.x;
             }
-            knife.transform.rotation = Quaternion.Euler( new Vector3(rotx+90, 90f+cam.transform.rotation.eulerAngles.y, -90f));//корректируем координаты ножа
+            float koeff = 1;
+            if ((180f > cam.transform.rotation.eulerAngles.y && cam.transform.rotation.eulerAngles.y > 90f) || (-90f > cam.transform.rotation.eulerAngles.y && cam.transform.rotation.eulerAngles.y >-180f))
+            {
+                Debug.Log("chage koeff");
+                koeff = -1;
+            }
+            knife.transform.rotation = Quaternion.Euler( new Vector3((rotx+90)*koeff, 90f+cam.transform.rotation.eulerAngles.y, -90f));//корректируем координаты ножа
         }
     }
     private void OnDisable()
